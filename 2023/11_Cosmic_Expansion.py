@@ -41,8 +41,15 @@ for i in range(galaxies_count):
 
 print("Result 1:", distances_sum)
 
-# for x, y in [(1, 7), (3, 6), (8, 9)]:
-#     print(distance(galaxies[x], galaxies[y], cosmos_weights))
+# PART II
 
-# for c in cosmos_weights:
-#     print(c)
+gap_distance = 1000000
+
+cosmos_weights = [[gap_distance if c > 1 else 1 for c in cosmos_line] for cosmos_line in cosmos_weights]
+
+distances_sum = 0
+for i in range(galaxies_count):
+    for j in range(i+1, galaxies_count):
+        distances_sum += distance(galaxies[i+1], galaxies[j+1], cosmos_weights)
+
+print("Result 1:", distances_sum)
